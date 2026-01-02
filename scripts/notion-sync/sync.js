@@ -70,8 +70,14 @@ async function syncEssay(filePath) {
   const blocks = markdownToBlocks(cleanContent);
 
   if (existingPageId) {
-    await updateNotionPage(existingPageId, title, blocks);
-    console.log(`Updated: "${title}" (${existingPageId})`);
+    // Archive old page and create new one (faster than deleting blocks)
+    await archiveNotionPage(existingPageId);
+    const newPageId = await createNotionPage(title, blocks);
+
+    // Update page ID in markdown file
+    const updatedContent = `${cleanContent}\n\n<!-- notion-page-id: ${newPageId} -->\n`;
+    await fs.writeFile(absolutePath, updatedContent, 'utf-8');
+    console.log(`Updated: "${title}" (archived ${existingPageId}, created ${newPageId})`);
   } else {
     const newPageId = await createNotionPage(title, blocks);
 
@@ -101,46 +107,11 @@ async function createNotionPage(title, blocks) {
   return response.id;
 }
 
-async function updateNotionPage(pageId, title, blocks) {
-  // Update page title
+async function archiveNotionPage(pageId) {
   await notion.pages.update({
     page_id: pageId,
-    properties: {
-      [titlePropertyName]: {
-        title: [{ text: { content: title } }]
-      }
-    }
+    archived: true
   });
-
-  // Delete existing blocks
-  const existingBlocks = await getAllBlocks(pageId);
-  for (const block of existingBlocks) {
-    try {
-      await notion.blocks.delete({ block_id: block.id });
-    } catch (error) {
-      console.warn(`Could not delete block ${block.id}:`, error.message);
-    }
-  }
-
-  // Append new blocks
-  await appendBlocksInChunks(pageId, blocks);
-}
-
-async function getAllBlocks(pageId) {
-  const blocks = [];
-  let cursor;
-
-  do {
-    const response = await notion.blocks.children.list({
-      block_id: pageId,
-      start_cursor: cursor,
-      page_size: 100
-    });
-    blocks.push(...response.results);
-    cursor = response.has_more ? response.next_cursor : undefined;
-  } while (cursor);
-
-  return blocks;
 }
 
 async function appendBlocksInChunks(pageId, blocks) {
