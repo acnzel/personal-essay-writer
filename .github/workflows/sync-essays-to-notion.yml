@@ -42,7 +42,7 @@ jobs:
         if: steps.changed-files.outputs.files != ''
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          NOTION_PARENT_PAGE_ID: ${{ secrets.NOTION_PARENT_PAGE_ID }}
           CHANGED_FILES: ${{ steps.changed-files.outputs.files }}
         run: node sync.js
         working-directory: scripts/notion-sync

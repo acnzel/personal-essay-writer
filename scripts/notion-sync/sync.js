@@ -9,28 +9,12 @@ const PROJECT_ROOT = path.resolve(__dirname, '../..');
 const PAGE_ID_PATTERN = /<!-- notion-page-id: ([a-f0-9-]+) -->/;
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
-const databaseId = process.env.NOTION_DATABASE_ID;
-
-let titlePropertyName = '이름'; // Will be detected from database schema
+const parentPageId = process.env.NOTION_PARENT_PAGE_ID;
 
 async function main() {
-  if (!process.env.NOTION_TOKEN || !databaseId) {
-    console.error('Missing NOTION_TOKEN or NOTION_DATABASE_ID');
+  if (!process.env.NOTION_TOKEN || !parentPageId) {
+    console.error('Missing NOTION_TOKEN or NOTION_PARENT_PAGE_ID');
     process.exit(1);
-  }
-
-  // Get database schema to find title property name
-  try {
-    const database = await notion.databases.retrieve({ database_id: databaseId });
-    for (const [name, prop] of Object.entries(database.properties)) {
-      if (prop.type === 'title') {
-        titlePropertyName = name;
-        break;
-      }
-    }
-    console.log(`Using title property: "${titlePropertyName}"`);
-  } catch (error) {
-    console.warn('Could not retrieve database schema, using default title property');
   }
 
   const changedFiles = process.env.CHANGED_FILES?.split(' ').filter(Boolean) || [];
@@ -84,9 +68,9 @@ async function syncEssay(filePath) {
 
 async function createNotionPage(title, blocks) {
   const response = await notion.pages.create({
-    parent: { database_id: databaseId },
+    parent: { page_id: parentPageId },
     properties: {
-      [titlePropertyName]: {
+      title: {
         title: [{ text: { content: title } }]
       }
     },
@@ -106,7 +90,7 @@ async function updateNotionPage(pageId, title, blocks) {
   await notion.pages.update({
     page_id: pageId,
     properties: {
-      [titlePropertyName]: {
+      title: {
         title: [{ text: { content: title } }]
       }
     }
