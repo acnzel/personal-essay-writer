@@ -33,6 +33,7 @@ jobs:
       - name: Get changed essay files
         id: changed-files
         run: |
+          git config core.quotepath false
           CHANGED=$(git diff --name-only HEAD~1 HEAD -- '.claude/skills/personal-essay/data/essays/*.md' | tr '\n' ' ')
           echo "files=$CHANGED" >> $GITHUB_OUTPUT
           echo "Changed files: $CHANGED"
