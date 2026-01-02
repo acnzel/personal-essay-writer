@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ESSAYS_DIR = path.resolve(__dirname, '../../.claude/skills/personal-essay/data/essays');
+const PROJECT_ROOT = path.resolve(__dirname, '../..');
 const PAGE_ID_PATTERN = /<!-- notion-page-id: ([a-f0-9-]+) -->/;
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -36,7 +36,7 @@ async function main() {
 }
 
 async function syncEssay(filePath) {
-  const absolutePath = path.resolve(filePath);
+  const absolutePath = path.resolve(PROJECT_ROOT, filePath);
   const content = await fs.readFile(absolutePath, 'utf-8');
 
   // Extract title from first H1 heading
