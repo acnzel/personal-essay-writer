@@ -1,0 +1,14 @@
+{
+  "name": "blog-sync",
+  "version": "1.0.0",
+  "description": "Sync essays to blog content and Supabase",
+  "type": "module",
+  "scripts": {
+    "copy": "node copy-essays.js",
+    "sync": "node sync-supabase.js",
+    "build": "npm run copy && npm run sync"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.47.0"
+  }
+}
