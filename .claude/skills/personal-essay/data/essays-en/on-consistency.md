@@ -72,4 +72,6 @@ I'm still not perfect. There are weeks when routines break, and I repeat the pro
 
 Why not start just one thing? It doesn't need to be grand. 2 minutes is enough. Just repeat those 2 minutes for 30 days. At some point, you'll find your default has changed.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3195284 -->
+<!-- dev-to-url: https://dev.to/manager_log/on-consistency-4hlh -->
+<!-- dev-to-published: true -->

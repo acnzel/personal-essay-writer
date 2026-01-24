@@ -48,4 +48,6 @@ But we have colleagues to work with. People who share the same concerns, experie
 
 This year won't be easy either, but we'll get through it anyway. As we always have. Go, dev team!
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3195280 -->
+<!-- dev-to-url: https://dev.to/manager_log/go-dev-team-2cfd -->
+<!-- dev-to-published: true -->
