@@ -49,7 +49,7 @@ git fetch -p && git pull
 3. 영어 파일명: 한글 제목의 영어 번역 (kebab-case)
 
 ### Dev.to 배포
-영어 에세이를 Dev.to에 게시:
+영어 에세이를 Dev.to에 자동 공개 게시:
 ```bash
 # API 키 필요 (https://dev.to/settings/extensions)
 curl -X POST https://dev.to/api/articles \
@@ -59,7 +59,7 @@ curl -X POST https://dev.to/api/articles \
     "article": {
       "title": "Article Title",
       "body_markdown": "Article content...",
-      "published": false,
+      "published": true,
       "tags": ["leadership", "management"]
     }
   }'
