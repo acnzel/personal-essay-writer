@@ -100,4 +100,6 @@ If you don't, I recommend looking for one. It doesn't have to be the whole compa
 
 As that small love accumulates, someday you'll be a senior who's been there 10, 15 years. Still speaking passionately, still not tired, still overflowing with things to say.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3195343 -->
+<!-- dev-to-url: https://dev.to/manager_log/a-workplace-with-stories-to-tell-4jog -->
+<!-- dev-to-published: true -->

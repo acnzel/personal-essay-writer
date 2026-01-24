@@ -109,4 +109,6 @@ Why not try this at your next meeting? Honestly saying "I don't know this part w
 
 The journey from knowledge to wisdom is hard alone. It becomes possible only when we're with people who share opinions together, acknowledge each other's ignorance, and keep learning. I hope you have such colleagues, and I hope you become such a colleague too.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3195327 -->
+<!-- dev-to-url: https://dev.to/manager_log/from-learning-to-wisdom-536m -->
+<!-- dev-to-published: true -->

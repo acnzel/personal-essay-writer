@@ -96,4 +96,6 @@ Just start. A day is enough for thinking. The rest is execution. No one knows wh
 
 I support and cheer for all your choices, attempts, successes, and failures. I hope you have a day with the courage to start rather than overthink.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3195311 -->
+<!-- dev-to-url: https://dev.to/manager_log/start-rather-than-overthink-4oam -->
+<!-- dev-to-published: true -->

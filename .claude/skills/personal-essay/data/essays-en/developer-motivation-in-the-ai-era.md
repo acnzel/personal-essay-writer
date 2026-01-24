@@ -74,4 +74,6 @@ Rolling yourself around and around, and through the various perspectives gained 
 
 I support and cheer for all your choices, attempts, successes, and failures.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3195300 -->
+<!-- dev-to-url: https://dev.to/manager_log/developer-motivation-in-the-ai-era-4c7m -->
+<!-- dev-to-published: true -->

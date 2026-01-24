@@ -78,4 +78,6 @@ That small change might completely transform your team and organization. I'm sti
 
 I hope relationships where we believe in each other's potential grow, one person at a time. Why not look for potential that's not on the resume in someone you meet today?
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3195301 -->
+<!-- dev-to-url: https://dev.to/manager_log/what-matters-more-than-experience-581c -->
+<!-- dev-to-published: true -->

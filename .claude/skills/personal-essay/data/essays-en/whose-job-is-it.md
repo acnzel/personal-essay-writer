@@ -68,4 +68,6 @@ That bug that came up in Slack a while ago—I ended up fixing it. It took about
 
 We're not a perfect team yet, but I feel like we're getting a little better. As "Whose job is this?" questions decrease and "I'll do it" answers increase.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3195316 -->
+<!-- dev-to-url: https://dev.to/manager_log/whose-job-is-it-2l29 -->
+<!-- dev-to-published: true -->

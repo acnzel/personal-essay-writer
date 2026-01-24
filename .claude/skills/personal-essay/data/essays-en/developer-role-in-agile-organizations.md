@@ -50,4 +50,6 @@ Agile isn't a cure-all. It doesn't fit every organization or every project. But 
 
 If I summarize the developer's role in agile organizations in one phrase, it would be the expansion from "someone who writes code" to "someone who builds the product together." That expansion might be burdensome, or it might actually be fun. Either way, thinking about your role in a changing environment is definitely worthwhile.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3195329 -->
+<!-- dev-to-url: https://dev.to/manager_log/the-developers-role-in-agile-organizations-3oi9 -->
+<!-- dev-to-published: true -->
