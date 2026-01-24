@@ -88,4 +88,6 @@ Try it just once. Instead of immediately giving answers to problems team members
 
 I support and cheer for all your choices, attempts, successes, and failures. The journey as a hands-on leader will be tough at times, but few things are as rewarding as seeing the team you've grown together at the end.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3195266 -->
+<!-- dev-to-url: https://dev.to/manager_log/a-management-guide-for-hands-on-leaders-507l -->
+<!-- dev-to-published: true -->

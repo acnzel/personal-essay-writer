@@ -48,4 +48,6 @@ Building an AI platform, I have these concerns. Making good technology is import
 
 I keep learning like this every day. Since growing people is such an important job as a leader, I write this page in my diary before leaving work, hoping my learning won't end with just me.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3195267 -->
+<!-- dev-to-url: https://dev.to/manager_log/before-adopting-ai-567d -->
+<!-- dev-to-published: true -->
