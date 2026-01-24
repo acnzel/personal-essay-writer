@@ -138,7 +138,8 @@ GitHub에 commit & push
         └── data/
             ├── style-guide.md     # 스타일 가이드
             ├── feedback-log.md    # 피드백 기록
-            ├── essays/            # 에세이 모음
+            ├── essays/            # 한글 에세이 모음 → Notion
+            ├── essays-en/         # 영어 에세이 모음 → Dev.to
             └── style-history/     # 가이드 버전 이력
 ```
 
@@ -154,6 +155,31 @@ GitHub에 commit & push
 | `[수정해줘]` + 피드백 | 수정 요청 |
 | `글 분석해줘 [파일명]` | 배포된 글 스타일 분석 및 가이드 업데이트 |
 | `최근 글 반영해줘` | essays/의 새 글을 분석하고 가이드 동기화 |
+| `영어로 번역해줘` | 한글 에세이를 영어로 번역하여 essays-en/에 저장 |
+| `Dev.to에 올려줘` | 영어 에세이를 Dev.to에 게시 (API 키 필요) |
+
+### 5. 다국어 배포 워크플로우
+```
+한글 에세이 작성 완료
+    ↓
+essays/에 저장 → Notion 배포
+    ↓
+영어로 번역
+    ↓
+essays-en/에 저장
+    ↓
+Dev.to API로 게시 (draft 또는 published)
+    ↓
+메타데이터 업데이트 (dev-to-id, dev-to-published)
+    ↓
+GitHub에 commit & push
+```
+
+#### 번역 원칙
+- 의미 전달 우선, 직역보다 자연스러운 영어 표현
+- 한국 문화 특정 표현은 맥락 설명 추가
+- 리더십/개발 관련 용어는 업계 표준 용어 사용
+- 파일명: 영어 제목의 kebab-case (예: `delegation-and-collaboration.md`)
 
 ## 성장 구조
 
