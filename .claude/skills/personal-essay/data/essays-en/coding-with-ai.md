@@ -56,4 +56,6 @@ It's time to stop grieving and embrace the new era.
 
 What stage are you at right now?
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 3235144 -->
+<!-- dev-to-url: https://dev.to/manager_log/coding-with-ai-154h -->
+<!-- dev-to-published: true -->

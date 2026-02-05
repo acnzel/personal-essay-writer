@@ -54,6 +54,6 @@ In the future, we may see a social culture where people work alone. For hands-on
 
 What, ultimately, is the endpoint of leadership? I believe it's creating a state where you can delegate 100%. People who share your sensibilities, people who are different but whom you've embraced and grown alongside, and people who are better than you. When you can appropriately distribute work among these various individuals and fully entrust it to them, only then can a leader begin to see the bigger picture. There's no right answer in the space between delegation and hands-on involvement. But continuously checking how well you understand the other person, and whether that understanding is being conveyed to them, while moving toward that endpoint—that's the standard I've found for myself.
 
-<!-- dev-to-id: 3195125 -->
-<!-- dev-to-url: https://dev.to/manager_log/between-delegation-and-hands-on-leadership-1p4i -->
+<!-- dev-to-id: 3235145 -->
+<!-- dev-to-url: https://dev.to/manager_log/between-delegation-and-hands-on-leadership-17na -->
 <!-- dev-to-published: true -->
