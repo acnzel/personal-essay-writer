@@ -36,7 +36,7 @@ Failure builds resilience. Someone who has fallen hard once knows they can get b
 
 We've had a lot of incidents lately. Honestly, I've written quite a few incident reports.
 
-After 20 years of development, I've learned something. When code production and change volume go up, the probability of incidents increases too. It's obvious. If you don't touch anything, there are no incidents. If you don't release new features, don't improve the system, don't take risks, incidents don't happen.
+After years of development, I've learned something. When code production and change volume go up, the probability of incidents increases too. It's obvious. If you don't touch anything, there are no incidents. If you don't release new features, don't improve the system, don't take risks, incidents don't happen.
 
 So having many incidents also means we're trying, building, and creating that much.
 
