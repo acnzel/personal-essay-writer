@@ -12,6 +12,7 @@ const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const databaseId = process.env.NOTION_DATABASE_ID;
 
 let titlePropertyName = '이름';
+let datePropertyName = null;
 
 async function main() {
   if (!process.env.NOTION_TOKEN || !databaseId) {
@@ -19,16 +20,21 @@ async function main() {
     process.exit(1);
   }
 
-  // Get database schema to find title property name
+  // Get database schema to find title and date property names
   try {
     const database = await notion.databases.retrieve({ database_id: databaseId });
     for (const [name, prop] of Object.entries(database.properties)) {
       if (prop.type === 'title') {
         titlePropertyName = name;
-        break;
+      }
+      if (prop.type === 'date') {
+        datePropertyName = name;
       }
     }
     console.log(`Using title property: "${titlePropertyName}"`);
+    if (datePropertyName) {
+      console.log(`Using date property: "${datePropertyName}"`);
+    }
   } catch (error) {
     console.warn('Could not retrieve database schema:', error.message);
   }
@@ -89,13 +95,23 @@ async function syncEssay(filePath) {
 }
 
 async function createNotionPage(title, blocks) {
+  const properties = {
+    [titlePropertyName]: {
+      title: [{ text: { content: title } }]
+    }
+  };
+
+  // Add publish date if date property exists
+  if (datePropertyName) {
+    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+    properties[datePropertyName] = {
+      date: { start: today }
+    };
+  }
+
   const response = await notion.pages.create({
     parent: { database_id: databaseId },
-    properties: {
-      [titlePropertyName]: {
-        title: [{ text: { content: title } }]
-      }
-    },
+    properties,
     children: blocks.slice(0, 100) // Notion limits 100 blocks per request
   });
 
