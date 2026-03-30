@@ -18,9 +18,11 @@ And most importantly, in organizations where failure isn't discussed, success st
 
 ## What Only Failure Can Teach
 
-I've failed many times too. Projects have been scrapped, directions I pushed with conviction turned out completely wrong. I've made mistakes in relationships with team members, and I've missed timing and lost opportunities.
+Looking back, I've failed so many times. At the time, I didn't even realize they were failures.
 
-But looking back, most of what I truly learned came from failure.
+When a project I'd worked on for six months was scrapped right before launch, I thought "the timing just wasn't right." When an architecture I'd pushed confidently required complete redesign after three months, I rationalized it as "requirements changed." I said hurtful things to team members and only realized much later. When a hiring decision went wrong and the whole team suffered, I thought "just bad luck."
+
+Now I see them all as failures. And most of what I truly learned came from there.
 
 When I succeeded, I thought "I knew my judgment was right" and moved on. I didn't deeply analyze why it succeeded. I didn't distinguish whether it was luck, skill, or timing. It worked, so I just thought it worked.
 
@@ -29,6 +31,20 @@ But when I failed, it was different. I had no choice but to think "why didn't it
 Failure teaches humility. You learn through experience that you can be wrong, that your convictions aren't always right. Without this humility, it's hard to accept feedback, and without accepting feedback, growth stops.
 
 Failure builds resilience. Someone who has fallen hard once knows they can get back up when they fall again. Someone who has never fallen crumbles at small failures. Failure muscles can only be built through failure.
+
+## What Incident Reports Tell Us
+
+We've had a lot of incidents lately. Honestly, I've written quite a few incident reports.
+
+After 20 years of development, I've learned something. When code production and change volume go up, the probability of incidents increases too. It's obvious. If you don't touch anything, there are no incidents. If you don't release new features, don't improve the system, don't take risks, incidents don't happen.
+
+So having many incidents also means we're trying, building, and creating that much.
+
+Of course, fewer incidents is better. They inconvenience users and stress the team. But I think it's better to try, fail, and learn than to attempt nothing just to avoid incidents.
+
+Every time we write an incident report, we learn. What went wrong, why it happened, how to prevent it next time. As that learning accumulates, our service becomes more robust, and our developers grow directly and indirectly. A developer who has experienced incidents is definitely different from one who hasn't.
+
+There's no need to be ashamed of incident reports. They're actually records showing how much we're trying and how much we're learning in the process.
 
 ## The Courage to Talk About Failure
 
