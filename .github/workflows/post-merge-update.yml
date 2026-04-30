@@ -1,0 +1,89 @@
+name: Post-Merge Essay Analysis
+
+on:
+  push:
+    paths:
+      - '.claude/skills/personal-essay/data/essays/*.md'
+    branches:
+      - main
+
+jobs:
+  analyze-and-update:
+    runs-on: ubuntu-latest
+
+    if: >-
+      !contains(github.event.head_commit.message, '[post-merge]') &&
+      !contains(github.event.head_commit.message, '[notion-sync]')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Get changed essay files
+        id: changed-files
+        run: |
+          git config core.quotepath false
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- '.claude/skills/personal-essay/data/essays/*.md' | tr '\n' '|')
+          CHANGED=${CHANGED%|}
+          echo "files=$CHANGED" >> $GITHUB_OUTPUT
+          echo "Changed files: $CHANGED"
+
+      - name: Analyze essays and update style guide
+        if: steps.changed-files.outputs.files != ''
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          npm install -g @anthropic-ai/claude-code
+
+          CHANGED_FILES="${{ steps.changed-files.outputs.files }}"
+
+          claude -p "
+          다음 에세이 파일들이 새로 추가/변경되었습니다: ${CHANGED_FILES}
+
+          아래 작업을 순서대로 수행해주세요:
+
+          1. 변경된 에세이 파일들을 읽고 스타일을 분석하세요.
+             - 톤, 구조, 표현 패턴, 메타 정보 확인
+             - 기존 style-guide.md와 비교
+
+          2. style-guide.md 업데이트:
+             - 분석 기반 목록에 새 글 추가
+             - 새로운 패턴/표현이 있으면 반영
+             - 버전 번호 증가
+             - 최종 업데이트 날짜를 오늘로 변경
+
+          3. feedback-log.md 업데이트:
+             - '에세이 배포 분석' 형식으로 기록
+             - 분석된 글 정보, 유형, 분석 결과, 반영 내역 포함
+             - 통계 섹션의 숫자 업데이트
+
+          4. style-history/ 디렉토리에 새 버전 저장:
+             - 파일명: style-guide_YYYYMMDD_vX.X.md
+
+          기존 파일 형식과 톤을 정확히 따라주세요.
+          "
+
+      - name: Update README.md
+        run: bash scripts/post-merge/update-readme.sh
+
+      - name: Commit and push updates
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "[post-merge] Update style guide, feedback log, and README
+
+          Auto-generated after essay merge to main."
+            git push
+          fi
