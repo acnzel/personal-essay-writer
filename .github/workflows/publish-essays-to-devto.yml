@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       files:
-        description: 'Space-separated essay paths to publish (leave empty to do nothing)'
+        description: 'Space-separated essay paths to publish (leave empty to publish every unpublished essay)'
         required: false
         default: ''
 
@@ -38,10 +38,16 @@ jobs:
           BEFORE_SHA: ${{ github.event.before }}
           AFTER_SHA: ${{ github.sha }}
           MANUAL_FILES: ${{ github.event.inputs.files }}
+          ESSAY_DIR: .claude/skills/personal-essay/data/essays-en
         run: |
           git config core.quotepath false
           if [ -n "$MANUAL_FILES" ]; then
             CHANGED="$MANUAL_FILES"
+          elif [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            # A manual run with no file list publishes everything still unpublished.
+            # -L selects files missing the marker, which covers both an explicit
+            # "false" and an essay committed without any metadata footer yet.
+            CHANGED=$(grep -rL 'dev-to-published: true' "$ESSAY_DIR" --include='*.md' | sort | tr '\n' ' ')
           else
             # A brand-new branch reports an all-zero "before" SHA; fall back to the last commit.
             if [ -z "$BEFORE_SHA" ] || [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
@@ -49,7 +55,7 @@ jobs:
             else
               RANGE="$BEFORE_SHA $AFTER_SHA"
             fi
-            CHANGED=$(git diff --name-only --diff-filter=d $RANGE -- '.claude/skills/personal-essay/data/essays-en/**/*.md' | tr '\n' ' ')
+            CHANGED=$(git diff --name-only --diff-filter=d $RANGE -- "$ESSAY_DIR/**/*.md" | tr '\n' ' ')
           fi
           echo "files=$CHANGED" >> $GITHUB_OUTPUT
           echo "Changed files: $CHANGED"
