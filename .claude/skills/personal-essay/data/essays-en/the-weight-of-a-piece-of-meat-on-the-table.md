@@ -1,4 +1,4 @@
-# The Weight of a Piece of Meat
+# The Weight of a Piece of Meat on the Table
 
 I recently watched an interview in which a documentary producer who films the remote corners of the world talked about the Hadza of Tanzania — said to be the last hunter-gatherer people left on Earth. They don't farm, and they keep no livestock. They hunt, and when the hunt fails, they dig up roots and gather berries. They have no private property, so whatever they catch is shared equally by everyone. Their houses are loosely woven from branches, and when the game moves on, they leave the houses behind without a second thought and move on too.
 
