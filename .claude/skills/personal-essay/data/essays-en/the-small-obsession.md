@@ -31,4 +31,6 @@ I hope we'll ask ourselves whether that stubbornness is quietly slipping away fr
 Building fast is something AI now does far better than we do. Deciding what not to build, on the other hand, should still be ours. Looking hard at what AI built so quickly and asking why it should exist, whether this is the right place for it —
 in this moment when making things has become so common, maybe that single question is what gives us our reason to be.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 4543573 -->
+<!-- dev-to-url: https://dev.to/manager_log/that-small-obsession-39m2 -->
+<!-- dev-to-published: true -->
