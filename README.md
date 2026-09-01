@@ -20,7 +20,7 @@ Claude와 함께 성장하는 개인 에세이 작성 시스템입니다.
     └── personal-essay/
         ├── SKILL.md                 # 메인 오케스트레이터
         └── data/
-            ├── style-guide.md       # 스타일 가이드 (v3.2)
+            ├── style-guide.md       # 스타일 가이드 (v3.3)
             ├── feedback-log.md      # 피드백 기록
             ├── essays/              # 에세이 모음 (25개)
             └── style-history/       # 가이드 버전 이력
