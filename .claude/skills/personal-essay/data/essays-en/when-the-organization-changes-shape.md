@@ -20,4 +20,6 @@ And this isn't something that plays out only on the org chart. In the end, it co
 
 If these questions are hard to answer right away, it may mean that the work flowed to you, but the reasons it began and the people you're meant to do it with didn't flow with it. When decisions come down but context doesn't come with them, a person can be clearly working and still be lost. Maybe a structure working well isn't something grand at all—it's simply a state where each person can answer these questions clearly.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 4543303 -->
+<!-- dev-to-url: https://dev.to/manager_log/when-an-organization-changes-shape-so-should-the-way-it-communicates-5b0a -->
+<!-- dev-to-published: true -->

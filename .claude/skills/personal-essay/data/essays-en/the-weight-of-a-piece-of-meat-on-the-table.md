@@ -24,4 +24,6 @@ One scene from the producer's account refuses to fade. The Hadza are not a warli
 
 We can't hunt all our own meat. We don't need to, and I'm not saying we should go back — once civilization comes in, they say, there's no holding it back. But we can choose how we sit at the table: as a hunter, not a receiver. A hunter isn't someone who is handed meat — a hunter is someone who decides for themselves which track to follow. So live through the one thing at the center of your craft from start to finish, and before asking for anything, turn the questions back toward yourself. Can this actually be eaten? What is it that I should be making right now? Is it worth making at all? Producing what we're handed, quickly, is something machines already do better. But deciding what to make, and whether it truly matters, still belongs to us. And that is why I find myself hopeful. Hunting tools have never been this good, which means there has never been a better era for a hunter who knows what to chase. The eyes that say "I am still alive" light up the moment you choose what to hunt.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 4543297 -->
+<!-- dev-to-url: https://dev.to/manager_log/the-weight-of-a-piece-of-meat-on-the-table-48d3 -->
+<!-- dev-to-published: true -->
