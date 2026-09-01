@@ -26,7 +26,7 @@ git fetch -p && git pull
 .claude/skills/personal-essay/data/
 ├── style-guide.md     # 스타일 가이드 (현재 버전)
 ├── feedback-log.md    # 피드백 기록
-├── essays/            # 한글 에세이 모음 → Notion 배포
+├── essays/            # 한글 에세이 모음
 ├── essays-en/         # 영어 에세이 모음 → Dev.to 배포
 └── style-history/     # 스타일 가이드 버전 이력
 ```
@@ -44,7 +44,7 @@ git fetch -p && git pull
 
 ### 다국어 배포 워크플로우
 한글 에세이 작성 시 자동으로 영어 번역본 생성:
-1. `essays/`에 한글 에세이 저장 → Notion 배포
+1. `essays/`에 한글 에세이 저장
 2. 영어로 번역하여 `essays-en/`에 저장 → Dev.to 배포
 3. 영어 파일명: 한글 제목의 영어 번역 (kebab-case)
 
