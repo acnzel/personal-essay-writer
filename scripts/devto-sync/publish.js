@@ -8,11 +8,12 @@ const PROJECT_ROOT = path.resolve(__dirname, '../..');
 const API_BASE = 'https://dev.to/api/articles';
 const DEFAULT_TAGS = ['leadership', 'management', 'career'];
 const MAX_TAGS = 4;
-const REQUEST_DELAY_MS = 2000;
+// Dev.to starts returning 429 after roughly two article creations per 30s,
+// so pace requests instead of leaning on the retry.
+const REQUEST_DELAY_MS = 15000;
+const MAX_ATTEMPTS = 3;
 
 const ID_PATTERN = /<!-- dev-to-id: (\d+) -->/;
-const URL_PATTERN = /<!-- dev-to-url: (.+?) -->/;
-const PUBLISHED_PATTERN = /<!-- dev-to-published: (true|false) -->/;
 const TAGS_PATTERN = /<!-- dev-to-tags: (.+?) -->/;
 const ANY_META_PATTERN = /^<!-- dev-to-[a-z]+:.*-->\s*$/gm;
 
@@ -115,7 +116,7 @@ function writeMetadata(cleanContent, { tags, id, url }) {
 }
 
 async function request(method, url, article) {
-  for (let attempt = 0; attempt < 2; attempt += 1) {
+  for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt += 1) {
     const response = await fetch(url, {
       method,
       headers: {
@@ -125,7 +126,7 @@ async function request(method, url, article) {
       body: JSON.stringify({ article })
     });
 
-    if (response.status === 429 && attempt === 0) {
+    if (response.status === 429 && attempt < MAX_ATTEMPTS - 1) {
       const retryAfter = Number(response.headers.get('retry-after')) || 30;
       console.log(`Rate limited, retrying in ${retryAfter}s...`);
       await sleep(retryAfter * 1000);
@@ -139,7 +140,7 @@ async function request(method, url, article) {
     return JSON.parse(text);
   }
 
-  throw new Error(`${method} ${url} failed after retrying a rate limit`);
+  throw new Error(`${method} ${url} failed after ${MAX_ATTEMPTS} rate-limited attempts`);
 }
 
 function sleep(ms) {

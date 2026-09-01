@@ -56,6 +56,9 @@ git fetch -p && git pull
 - 변경된 파일만 처리한다. `dev-to-id`가 없으면 신규 생성(POST), 있으면 본문 갱신(PUT)
 - 제목은 파일 첫 `# ` 헤딩. 본문에서는 제거되고 Dev.to의 title 필드로 들어간다
 - 게시 후 액션이 메타데이터를 파일에 기록하고 `[devto-sync]` 커밋으로 push한다
+- 이미 커밋된 미게시 글은 push diff에 안 잡힌다. Actions 탭에서 수동 실행하면
+  `dev-to-published: true` 가 없는 파일을 전부 게시한다. `files` 입력에 경로를
+  공백으로 구분해 넣으면 그 파일만 게시한다
 - 필요한 시크릿: `DEVTO_API_KEY` (https://dev.to/settings/extensions)
 
 영어 에세이 파일 하단의 메타데이터:
