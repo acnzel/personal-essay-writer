@@ -12,6 +12,11 @@ jobs:
   sync-and-deploy:
     runs-on: ubuntu-latest
 
+    # The secrets context is not available in a step's `if`, so the hook is
+    # surfaced as an env var that the condition can read.
+    env:
+      VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -37,5 +42,5 @@ jobs:
         working-directory: scripts/blog-sync
 
       - name: Trigger Vercel Deploy
-        if: ${{ secrets.VERCEL_DEPLOY_HOOK != '' }}
-        run: curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        if: env.VERCEL_DEPLOY_HOOK != ''
+        run: curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"
