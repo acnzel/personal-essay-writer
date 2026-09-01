@@ -138,7 +138,7 @@ GitHub에 commit & push
         └── data/
             ├── style-guide.md     # 스타일 가이드
             ├── feedback-log.md    # 피드백 기록
-            ├── essays/            # 한글 에세이 모음 → Notion
+            ├── essays/            # 한글 에세이 모음
             ├── essays-en/         # 영어 에세이 모음 → Dev.to
             └── style-history/     # 가이드 버전 이력
 ```
@@ -162,7 +162,7 @@ GitHub에 commit & push
 ```
 한글 에세이 작성 완료
     ↓
-essays/에 저장 → Notion 배포
+essays/에 저장
     ↓
 영어로 번역
     ↓
