@@ -1,0 +1,9 @@
+{
+  "name": "devto-sync",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Publish English essays to Dev.to",
+  "scripts": {
+    "publish-essays": "node publish.js"
+  }
+}

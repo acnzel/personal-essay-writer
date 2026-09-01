@@ -1,0 +1,75 @@
+name: Publish Essays to Dev.to
+
+on:
+  push:
+    paths:
+      - '.claude/skills/personal-essay/data/essays-en/**/*.md'
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      files:
+        description: 'Space-separated essay paths to publish (leave empty to do nothing)'
+        required: false
+        default: ''
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    # Prevent infinite loops from our own metadata commits
+    if: "!contains(github.event.head_commit.message, '[devto-sync]')"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Get changed essay files
+        id: changed-files
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+          MANUAL_FILES: ${{ github.event.inputs.files }}
+        run: |
+          git config core.quotepath false
+          if [ -n "$MANUAL_FILES" ]; then
+            CHANGED="$MANUAL_FILES"
+          else
+            # A brand-new branch reports an all-zero "before" SHA; fall back to the last commit.
+            if [ -z "$BEFORE_SHA" ] || [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
+              RANGE="HEAD~1 HEAD"
+            else
+              RANGE="$BEFORE_SHA $AFTER_SHA"
+            fi
+            CHANGED=$(git diff --name-only --diff-filter=d $RANGE -- '.claude/skills/personal-essay/data/essays-en/**/*.md' | tr '\n' ' ')
+          fi
+          echo "files=$CHANGED" >> $GITHUB_OUTPUT
+          echo "Changed files: $CHANGED"
+
+      - name: Publish essays to Dev.to
+        if: steps.changed-files.outputs.files != ''
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          CHANGED_FILES: ${{ steps.changed-files.outputs.files }}
+        run: node publish.js
+        working-directory: scripts/devto-sync
+
+      - name: Commit article ID updates
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "[devto-sync] Update Dev.to article metadata"
+            git push
+          fi
