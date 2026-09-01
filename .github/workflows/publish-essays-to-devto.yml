@@ -55,7 +55,10 @@ jobs:
             else
               RANGE="$BEFORE_SHA $AFTER_SHA"
             fi
-            CHANGED=$(git diff --name-only --diff-filter=d $RANGE -- "$ESSAY_DIR/**/*.md" | tr '\n' ' ')
+            # Not **/*.md: in a git pathspec * already spans /, so ** carries no
+            # "zero or more directories" meaning and the pattern would require an
+            # intermediate directory, missing every essay sitting directly here.
+            CHANGED=$(git diff --name-only --diff-filter=d $RANGE -- "$ESSAY_DIR/*.md" | tr '\n' ' ')
           fi
           echo "files=$CHANGED" >> $GITHUB_OUTPUT
           echo "Changed files: $CHANGED"
