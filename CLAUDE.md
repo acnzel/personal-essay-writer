@@ -49,23 +49,18 @@ git fetch -p && git pull
 3. 영어 파일명: 한글 제목의 영어 번역 (kebab-case)
 
 ### Dev.to 배포
-영어 에세이를 Dev.to에 자동 공개 게시:
-```bash
-# API 키 필요 (https://dev.to/settings/extensions)
-curl -X POST https://dev.to/api/articles \
-  -H "Content-Type: application/json" \
-  -H "api-key: ${DEVTO_API_KEY}" \
-  -d '{
-    "article": {
-      "title": "Article Title",
-      "body_markdown": "Article content...",
-      "published": true,
-      "tags": ["leadership", "management"]
-    }
-  }'
-```
+`essays-en/`의 마크다운이 main에 push되면 GitHub Actions
+(`.github/workflows/publish-essays-to-devto.yml`)가 `scripts/devto-sync/publish.js`를
+실행해 Dev.to에 공개 게시한다. 세션에서 직접 API를 호출하지 않는다.
+
+- 변경된 파일만 처리한다. `dev-to-id`가 없으면 신규 생성(POST), 있으면 본문 갱신(PUT)
+- 제목은 파일 첫 `# ` 헤딩. 본문에서는 제거되고 Dev.to의 title 필드로 들어간다
+- 게시 후 액션이 메타데이터를 파일에 기록하고 `[devto-sync]` 커밋으로 push한다
+- 필요한 시크릿: `DEVTO_API_KEY` (https://dev.to/settings/extensions)
 
 영어 에세이 파일 하단의 메타데이터:
+- `<!-- dev-to-tags: leadership, management -->` - 태그 지정 (생략 시 기본값 leadership, management, career / 최대 4개)
 - `<!-- dev-to-published: false -->` - 아직 게시 안됨
 - `<!-- dev-to-published: true -->` - 게시됨
 - `<!-- dev-to-id: 12345 -->` - Dev.to 글 ID (게시 후 기록)
+- `<!-- dev-to-url: ... -->` - 게시된 글 주소 (게시 후 기록)

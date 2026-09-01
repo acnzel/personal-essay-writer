@@ -156,7 +156,7 @@ GitHub에 commit & push
 | `글 분석해줘 [파일명]` | 배포된 글 스타일 분석 및 가이드 업데이트 |
 | `최근 글 반영해줘` | essays/의 새 글을 분석하고 가이드 동기화 |
 | `영어로 번역해줘` | 한글 에세이를 영어로 번역하여 essays-en/에 저장 |
-| `Dev.to에 올려줘` | 영어 에세이를 Dev.to에 게시 (API 키 필요) |
+| `Dev.to에 올려줘` | essays-en/에 저장 후 push. 게시는 GitHub Actions가 수행 |
 
 ### 5. 다국어 배포 워크플로우
 ```
@@ -168,12 +168,16 @@ essays/에 저장
     ↓
 essays-en/에 저장
     ↓
-Dev.to API로 게시 (draft 또는 published)
+GitHub에 commit & push (main)
     ↓
-메타데이터 업데이트 (dev-to-id, dev-to-published)
+GitHub Actions가 Dev.to에 공개 게시
     ↓
-GitHub에 commit & push
+액션이 메타데이터(dev-to-id, dev-to-url, dev-to-published) 커밋
 ```
+
+Dev.to 게시는 `.github/workflows/publish-essays-to-devto.yml`이 담당한다.
+세션에서 직접 Dev.to API를 호출하지 않는다. 태그를 지정하려면 파일 하단에
+`<!-- dev-to-tags: leadership, management -->`를 추가한다 (생략 시 기본값).
 
 #### 번역 원칙
 - 의미 전달 우선, 직역보다 자연스러운 영어 표현
