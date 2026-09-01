@@ -86,4 +86,6 @@ And become someone who leads your precious time.
 
 In that process, new routines, communication, and processes will emerge.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 4543150 -->
+<!-- dev-to-url: https://dev.to/manager_log/master-your-time-22nn -->
+<!-- dev-to-published: true -->

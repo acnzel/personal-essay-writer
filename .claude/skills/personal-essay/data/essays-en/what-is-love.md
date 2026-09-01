@@ -28,4 +28,6 @@ Love is ultimately the time invested in relationships, being completely present 
 
 It doesn't need to be grand. Offering a cup of coffee to a colleague next to you today, making a phone call to check on family—those small things gather to become love. I hope your day today is filled with such small loves.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 4543162 -->
+<!-- dev-to-url: https://dev.to/manager_log/what-is-love-4obi -->
+<!-- dev-to-published: true -->

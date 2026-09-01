@@ -78,4 +78,6 @@ The opportunity for developers going forward isn't in making people use AI moreâ
 
 How much is your team actually reading AI's output?
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 4543156 -->
+<!-- dev-to-url: https://dev.to/manager_log/the-essence-of-vibe-coding-43pi -->
+<!-- dev-to-published: true -->

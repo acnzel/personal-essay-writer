@@ -96,4 +96,6 @@ I will continue to fail. And I will learn from those failures. That's the surest
 
 When was your last failure? And what did you learn from it?
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 4543158 -->
+<!-- dev-to-url: https://dev.to/manager_log/what-failure-taught-me-19c1 -->
+<!-- dev-to-published: true -->

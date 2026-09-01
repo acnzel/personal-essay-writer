@@ -50,4 +50,6 @@ Ultimately, what we can do is build our skills while creating our own narrative.
 
 I think the journey of finding yourself might be the beginning of that preparation.
 
-<!-- dev-to-published: false -->
+<!-- dev-to-id: 4543151 -->
+<!-- dev-to-url: https://dev.to/manager_log/the-courage-to-find-yourself-1359 -->
+<!-- dev-to-published: true -->
